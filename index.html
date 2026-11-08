@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080912"><title>FLAXXI OFFICIAL · License Studio</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="ambient a1"></div><div class="ambient a2"></div>
+  <header class="topbar"><a class="brand" href="#"><span class="sigil">ϟ</span><span>FLAXXI OFFICIAL<small>KURO 7 / LICENSES</small></span></a><span class="live"><i></i> SECURE WORKSPACE</span></header>
+  <main>
+    <section id="loginView" class="login-wrap">
+      <div class="eyebrow">OWNER ACCESS</div><h1>Welcome back<span class="dot">.</span></h1>
+      <p class="muted">Your FLAXXI OFFICIAL licensing workspace.</p>
+      <form id="loginForm" class="panel login-panel">
+        <label>Username<input name="username" autocomplete="username" required placeholder="Enter username"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required placeholder="Enter password"></label>
+        <button class="primary full" type="submit">Sign in <span>↗</span></button>
+        <p id="loginError" class="error"></p>
+      </form>
+      <div class="footnote">AUTHORIZED OWNER SIGN-IN ONLY</div>
+    </section>
+
+    <section id="appView" hidden>
+      <div class="workspace-head"><div><div class="eyebrow">LICENSE WORKSPACE</div><h1>Licenses<span class="dot">.</span></h1><p class="muted">Create and manage your customer licenses.</p></div><button id="logoutBtn" class="ghost">Sign out ↗</button></div>
+      <div class="stats">
+        <div class="panel stat"><small>TOTAL LICENSES</small><strong id="totalCount">0</strong></div>
+        <div class="panel stat"><small>ACTIVE</small><strong id="activeCount">0</strong></div>
+        <div class="panel stat"><small>REVOKED</small><strong id="revokedCount">0</strong></div>
+      </div>
+      <div class="columns">
+        <section class="panel form-panel">
+          <div class="section-title"><div><span class="number">01 / CREATE</span><h2>Generate license</h2></div><span class="spark">✳</span></div>
+          <form id="licenseForm">
+            <label>Key type<select name="keyType"><option value="Standard">Standard</option><option value="Premium">Premium</option><option value="VIP">VIP</option></select></label>
+            <label>Your custom key <span class="optional">OPTIONAL</span><input name="customKey" placeholder="Enter any key you choose"></label>
+            <p class="hint">Letters, numbers, @, dots, underscores and hyphens are supported.</p>
+            <label>Customer label <span class="optional">OPTIONAL</span><input name="label" placeholder="e.g. Customer · monthly"></label>
+            <div class="form-row">
+              <label>Valid for<select name="durationDays"><option value="1">1 day</option><option value="7">7 days</option><option value="30" selected>30 days</option><option value="90">90 days</option><option value="365">1 year</option></select></label>
+              <label>Device limit<input name="deviceLimit" type="number" min="1" max="100" value="1" required></label>
+            </div>
+            <button class="primary full" type="submit">Generate key <span>↗</span></button>
+            <p class="hint">Validity starts when the key is created. Save the generated key now; full keys are shown once.</p>
+          </form>
+        </section>
+        <section class="panel share-panel">
+          <div class="section-title"><div><span class="number">02 / SHARE</span><h2>Your new key</h2></div><span class="spark">⌁</span></div>
+          <div id="keyOutput" class="key-output">Your generated key will appear here.</div>
+          <button id="copyBtn" class="ghost full" disabled>Copy key ⧉</button>
+          <p id="keyMeta" class="hint">Choose a key type, duration and device limit to begin.</p>
+          <div class="divider"></div>
+          <div class="section-title"><div><span class="number">03 / INSPECT</span><h2>API response viewer</h2></div><span class="spark">⌘</span></div>
+          <p class="hint">Requests are restricted to this dashboard's own <code>/api/</code> routes.</p>
+          <form id="apiForm" class="api-form">
+            <select name="method"><option>GET</option><option>POST</option></select>
+            <input name="path" value="/api/health" aria-label="API path">
+            <textarea name="body" placeholder='{"example":true}' rows="3"></textarea>
+            <button class="ghost full" type="submit">Send API request ↗</button>
+          </form>
+          <pre id="apiOutput" class="response">Response will appear here.</pre>
+        </section>
+      </div>
+      <section class="panel history-panel">
+        <div class="section-title"><div><span class="number">04 / RECORDS</span><h2>License history</h2></div><button id="refreshBtn" class="ghost">Refresh ↻</button></div>
+        <div class="table-wrap"><table><thead><tr><th>CUSTOMER / KEY</th><th>STATUS</th><th>EXPIRES</th><th>DEVICES</th><th>ACTIONS</th></tr></thead><tbody id="licenseRows"><tr><td colspan="5" class="empty">No licenses yet.</td></tr></tbody></table></div>
+      </section>
+    </section>
+  </main>
+  <footer>ϟ FLAXXI OFFICIAL <span>·</span> KURO 7 / LICENSES</footer>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body></html>
